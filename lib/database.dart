@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 
 class DatabaseService {
   final String uid;
@@ -8,18 +9,23 @@ class DatabaseService {
   //collection reference
   final CollectionReference messCollection =
       FirebaseFirestore.instance.collection('mess');
+  final CollectionReference membersCollection =
+      FirebaseFirestore.instance.collection('members');
 
-  Future createMess(String memberName, int mealCount, double mealRate,
+  Future createMess(String messName, int mealCount, double mealRate,
       int totalFoodCost) async {
     return await messCollection.doc(uid).set({
-      'members': memberName,
+      'messName': messName,
       'mealCount': mealCount,
       'mealRate': mealRate,
       'totalFoodCost': totalFoodCost,
     });
   }
 
-// Future addMessMember(String uid) async  {
-//   return await
-// }
+  Future joinMess(String messUID) async {
+    //messUID is mess manager's uid
+    return await membersCollection.doc(uid).set({
+      'messID': messUID,
+    });
+  }
 }

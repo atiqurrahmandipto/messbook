@@ -65,6 +65,8 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
 
   void createMess() async {
     await DatabaseService(uid: widget.uid)
-        .createMess("saeedus salehin", 22, 51, 2211);
+        .createMess("VIKINGS", 22, 51, 2211);
+    //now join as member
+    await DatabaseService(uid: widget.uid).joinMess(widget.uid);
   }
 }

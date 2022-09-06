@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mess_manager/database.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import '../home/home.dart';
 
@@ -76,6 +78,14 @@ class _QRScannerWidgetState extends State<QRScannerWidget> {
                     } else {
                       final String code = barcode.rawValue!;
                       debugPrint('Barcode found! $code');
+
+                      //joining mess [saving mess uid]
+                      _joinMess(code);
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => HomePage()));
+
                     }
                   }),
             ),
@@ -83,5 +93,10 @@ class _QRScannerWidgetState extends State<QRScannerWidget> {
         ),
       ),
     );
+  }
+
+  void _joinMess(String messUID) async {
+    await DatabaseService(uid: FirebaseAuth.instance.currentUser?.uid ?? "")
+        .joinMess(messUID);
   }
 }
