@@ -39,7 +39,7 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
             SizedBox(height: 32),
             Padding(
               padding: const EdgeInsets.all(6.0),
-              child: UIProvider.actionBtn(context, text: 'Member', onTap: () {
+              child: UIProvider.actionBtn(context, text: 'Manager', onTap: () {
                 createMess();
                 Navigator.pushReplacement(
                     context,
@@ -49,7 +49,7 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
             ),
             Padding(
               padding: const EdgeInsets.all(6.0),
-              child: UIProvider.actionBtn(context, text: 'Manager', onTap: () {
+              child: UIProvider.actionBtn(context, text: 'Member', onTap: () {
                 ///don't remove///
                 // Navigator.pushReplacement(
                 //     context,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mess_manager/invitation/member_invitation_screen.dart';
+import 'package:mess_manager/ui_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,10 +14,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(
-          'Homepage',
-          style: TextStyle(
-              fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: UIProvider.actionBtn(context, text: "Invite members", onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        MemberInvitationScreen()));
+          }),
         ),
       ),
     );

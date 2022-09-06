@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class MemberInvitationScreen extends StatefulWidget {
   const MemberInvitationScreen({Key? key}) : super(key: key);
@@ -20,6 +22,9 @@ class _MemberInvitationScreenState extends State<MemberInvitationScreen> {
       body: Center(
         child: Column(
           children: [
+            SizedBox(
+              height: 32,
+            ),
             Text(
               "Invite members",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -38,51 +43,14 @@ class _MemberInvitationScreenState extends State<MemberInvitationScreen> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
               ),
-            ),
-            SizedBox(height: 16),
-            Text('Or'),
-            SizedBox(height: 24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 55,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(8),
-                          topLeft: Radius.circular(8))),
-                  width: MediaQuery.of(context).size.width / 2.25,
-                  child: Center(
-                      child: Text(
-                    "1122xYz",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  )),
+              child: Center(
+                child: QrImage(
+                  data: FirebaseAuth.instance.currentUser?.uid ?? "ERROR",
+                  size: 220,
+                  version: QrVersions.auto,
                 ),
-                Container(
-                  height: 55,
-                  decoration: BoxDecoration(
-                      color: Color(0xff1572A1),
-                      borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(8),
-                          topRight: Radius.circular(8))),
-                  width: MediaQuery.of(context).size.width / 2.25,
-                  child: Center(
-                    child: Text("Invite member",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white)),
-                  ),
-                ),
-              ],
+              ),
             ),
-            SizedBox(height: 20),
-            Text(
-              "Skip",
-              style:
-                  TextStyle(fontSize: 16, decoration: TextDecoration.underline),
-            )
           ],
         ),
       ),
