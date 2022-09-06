@@ -44,17 +44,17 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => HomePage()));
+                        builder: (BuildContext context) =>
+                            MemberInvitationScreen()));
               }),
             ),
             Padding(
               padding: const EdgeInsets.all(6.0),
               child: UIProvider.actionBtn(context, text: 'Member', onTap: () {
-                ///don't remove///
-                // Navigator.pushReplacement(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (BuildContext context) => QRScannerWidget()));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => QRScannerWidget()));
               }),
             ),
           ],

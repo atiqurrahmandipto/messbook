@@ -16,13 +16,11 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
-          child: UIProvider.actionBtn(context, text: "Invite members", onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (BuildContext context) =>
-                        MemberInvitationScreen()));
-          }),
+          child: Text(
+            "homepage",
+            style: TextStyle(
+                color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 24),
+          ),
         ),
       ),
     );

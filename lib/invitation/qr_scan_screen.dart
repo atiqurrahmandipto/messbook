@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../ui_provider.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
+import '../home/home.dart';
 
 class QRScannerWidget extends StatefulWidget {
   const QRScannerWidget({Key? key}) : super(key: key);
@@ -18,10 +18,37 @@ class _QRScannerWidgetState extends State<QRScannerWidget> {
         title: Text(""),
         backgroundColor: Color(0xffEAF2FF),
         elevation: 0,
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => HomePage()));
+            },
+            child: SizedBox(
+              height: 40,
+              child: Center(
+                  child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Skip',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      decoration: TextDecoration.underline),
+                ),
+              )),
+            ),
+          ),
+        ],
       ),
       body: Center(
         child: Column(
           children: [
+            SizedBox(
+              height: 32,
+            ),
             Text(
               "Scan QR Code",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -40,24 +67,17 @@ class _QRScannerWidgetState extends State<QRScannerWidget> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
               ),
-            ),
-            SizedBox(height: 16),
-            Text('Or'),
-            SizedBox(height: 24),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 8, right: 8),
-                  child: UIProvider.textField(context,
-                      text: "Enter invitation code"),
-                ),
-                SizedBox(height: 8),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: UIProvider.actionBtn(context, text: "Join as member", onTap: () {}),
-                ),
-              ],
+              child: MobileScanner(
+                  allowDuplicates: false,
+                  onDetect: (barcode, args) {
+                    if (barcode.rawValue == null ||
+                        barcode.rawValue == "ERROR") {
+                      debugPrint('Failed to scan Barcode');
+                    } else {
+                      final String code = barcode.rawValue!;
+                      debugPrint('Barcode found! $code');
+                    }
+                  }),
             ),
           ],
         ),

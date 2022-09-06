@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home:
-          FirebaseAuth.instance.currentUser != null ? HomePage() : MyHomePage(),
+          FirebaseAuth.instance.currentUser != null ? HomePage() : MyHomePage(), // replace to add myhomepage
     );
   }
 }

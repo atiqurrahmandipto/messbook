@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mess_manager/home/home.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class MemberInvitationScreen extends StatefulWidget {
@@ -18,6 +19,30 @@ class _MemberInvitationScreenState extends State<MemberInvitationScreen> {
         title: Text(""),
         backgroundColor: Color(0xffEAF2FF),
         elevation: 0,
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => HomePage()));
+            },
+            child: SizedBox(
+              height: 40,
+              child: Center(
+                  child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Skip',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      decoration: TextDecoration.underline),
+                ),
+              )),
+            ),
+          ),
+        ],
       ),
       body: Center(
         child: Column(
