@@ -45,7 +45,7 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                     context,
                     MaterialPageRoute(
                         builder: (BuildContext context) =>
-                            MemberInvitationScreen()));
+                            MemberInvitationScreen(true)));
               }),
             ),
             Padding(
@@ -64,8 +64,7 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
   }
 
   void createMess() async {
-    await DatabaseService(uid: widget.uid)
-        .createMess("VIKINGS", 22, 51, 2211);
+    await DatabaseService(uid: widget.uid).createMess("VIKINGS", 22, 51, 2211);
     //now join as member
     await DatabaseService(uid: widget.uid).joinMess(widget.uid);
   }

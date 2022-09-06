@@ -4,7 +4,9 @@ import 'package:mess_manager/home/main_screen.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class MemberInvitationScreen extends StatefulWidget {
-  const MemberInvitationScreen({Key? key}) : super(key: key);
+  final bool canSkip;
+
+  const MemberInvitationScreen(this.canSkip, {Key? key}) : super(key: key);
 
   @override
   State<MemberInvitationScreen> createState() => _MemberInvitationScreenState();
@@ -20,28 +22,30 @@ class _MemberInvitationScreenState extends State<MemberInvitationScreen> {
         backgroundColor: Color(0xffEAF2FF),
         elevation: 0,
         actions: [
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => MainScreen()));
-            },
-            child: SizedBox(
-              height: 40,
-              child: Center(
-                  child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Skip',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      decoration: TextDecoration.underline),
-                ),
-              )),
-            ),
-          ),
+          widget.canSkip
+              ? GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => MainScreen()));
+                  },
+                  child: SizedBox(
+                    height: 40,
+                    child: Center(
+                        child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Skip',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            decoration: TextDecoration.underline),
+                      ),
+                    )),
+                  ),
+                )
+              : SizedBox(),
         ],
       ),
       body: Center(

@@ -14,10 +14,34 @@ class _SettingScreenState extends State<SettingScreen> {
   Widget build(BuildContext context) {
     return Material(
       color: Color(0xffEAF2FF),
-      child: Container(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          SizedBox(
+            height: 24,
+          ),
+          CircleAvatar(
+            backgroundColor: Colors.white,
+            maxRadius: 80,
+            minRadius: 80,
+            child: Center(
+              child: Icon(
+                Icons.person,
+                size: 72,
+                color: Colors.black26,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 12, bottom: 4),
+            child: Text(
+              'Your name',
+              style: TextStyle(fontSize: 22),
+            ),
+          ),
+          Text(FirebaseAuth.instance.currentUser?.phoneNumber ??
+              '+880xxxxxxxxxx'),
+          Spacer(),
           Padding(
             padding: const EdgeInsets.only(bottom: 24),
             child: Ink(
@@ -30,7 +54,7 @@ class _SettingScreenState extends State<SettingScreen> {
               child: InkWell(
                 onTap: () {
                   FirebaseAuth.instance.signOut();
-                  Navigator.of(context).pushAndRemoveUntil(
+                  Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
                       MaterialPageRoute(builder: (context) => SignUpScreen()),
                       (Route<dynamic> route) => false);
                 },
@@ -43,7 +67,7 @@ class _SettingScreenState extends State<SettingScreen> {
             ),
           ),
         ],
-      )),
+      ),
     );
   }
 }
