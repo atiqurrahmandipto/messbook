@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mess_manager/database.dart';
-import 'package:mess_manager/home/home.dart';
+import 'package:mess_manager/home/main_screen.dart';
 import 'package:mess_manager/invitation/member_invitation_screen.dart';
 import 'package:mess_manager/invitation/qr_scan_screen.dart';
 import 'package:mess_manager/ui_provider.dart';

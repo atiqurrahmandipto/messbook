@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mess_manager/home/home.dart';
+import 'package:mess_manager/home/main_screen.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class MemberInvitationScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class _MemberInvitationScreenState extends State<MemberInvitationScreen> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => HomePage()));
+                      builder: (BuildContext context) => MainScreen()));
             },
             child: SizedBox(
               height: 40,

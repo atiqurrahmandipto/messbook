@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mess_manager/authentication/signup_screen.dart';
-import 'package:mess_manager/home/home.dart';
+import 'package:mess_manager/home/main_screen.dart';
 
 import 'authentication/role_selection_screen.dart';
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home:
-          FirebaseAuth.instance.currentUser != null ? HomePage() : MyHomePage(), // replace to add myhomepage
+          FirebaseAuth.instance.currentUser != null ? MainScreen() : MainScreen(), // replace to add myhomepage
     );
   }
 }

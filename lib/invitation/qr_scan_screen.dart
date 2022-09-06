@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mess_manager/database.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import '../home/home.dart';
+import '../home/main_screen.dart';
 
 class QRScannerWidget extends StatefulWidget {
   const QRScannerWidget({Key? key}) : super(key: key);
@@ -26,7 +26,7 @@ class _QRScannerWidgetState extends State<QRScannerWidget> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => HomePage()));
+                      builder: (BuildContext context) => MainScreen()));
             },
             child: SizedBox(
               height: 40,
@@ -84,7 +84,7 @@ class _QRScannerWidgetState extends State<QRScannerWidget> {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => HomePage()));
+                              builder: (BuildContext context) => MainScreen()));
 
                     }
                   }),
